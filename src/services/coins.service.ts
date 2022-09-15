@@ -12,8 +12,6 @@ export class CoinsService {
 
     async getCoinList(): Promise<Coin[]> {
         try {
-            console.log(BASE_URL);
-            
             const coinList = await axios.get(`${BASE_URL}/coins/list`);
             const bitcoin = coinList.data.filter(currency => currency.name === 'Bitcoin');
             console.log(bitcoin);
