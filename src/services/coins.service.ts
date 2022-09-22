@@ -19,11 +19,12 @@ export class CoinsService {
     async getCoinList(): Promise<Coin[]> {
         try {
             //const BASE_URL = this.configService.get('BASE_API_URL');
-            console.log(BASE_URL);
+            //console.log(BASE_URL);
             
             const coinList = await axios.get(`${BASE_URL}/coins/list`);
-            const bitcoin = coinList.data.filter(currency => currency.name === 'Bitcoin');
-            console.log(bitcoin);
+            //const bitcoin = coinList.data.filter(currency => currency.name === 'Bitcoin');
+            //console.log(bitcoin);
+            console.log("Var env", process.env.MESSAGE);
             return coinList.data;
         } catch (error) {
             throw new Error("Error getting coin lists");
