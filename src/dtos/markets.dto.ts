@@ -1,8 +1,7 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class MarketsDto {
-    @IsString()
-    @IsNotEmpty()
-    readonly currency : string;
-
+  @IsString()
+  @IsNotEmpty()
+  readonly currency: string;
 }

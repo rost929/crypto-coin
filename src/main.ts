@@ -9,7 +9,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Crypto Coin')
-    .setDescription('Crypto Coin is an application based on a public API, provides information about coins, markets and trends')
+    .setDescription(
+      'Crypto Coin is an application based on a public API, provides information about coins, markets and trends',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
