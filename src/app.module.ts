@@ -7,12 +7,17 @@ import { CoinsController } from './controllers/coins.controller';
 import { CoinsService } from './services/coins.service';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from "./environments";
+import * as Joi from 'joi';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath:  environments[process.env.NODE_ENV] || '.env',
       isGlobal: true,
+      validationSchema: Joi.object({
+        PORT: Joi.number().required(),
+        BASE_API_URL: Joi.string().required(),
+      })
     }),
   ],
   controllers: [AppController, BaseController, CoinsController],
