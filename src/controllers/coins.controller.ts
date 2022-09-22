@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Query, ValidationPipe } from "@nestjs/common";
-import { MarketsDto } from "src/dtos/Markets.dtos";
+import { MarketsDto } from "src/dtos/Markets.dto";
 import { CoinsService } from "../services/coins.service";
 
 @Controller('coins')
