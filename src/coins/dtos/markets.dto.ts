@@ -4,5 +4,4 @@ export class MarketsDto {
     @IsString()
     @IsNotEmpty()
     readonly currency : string;
-
 }

@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Query, ValidationPipe } from "@nestjs/common";
-import { MarketsDto } from "src/dtos/markets.dto";
+import { MarketsDto } from "../dtos/markets.dto";
 import { CoinsService } from "../services/coins.service";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 

@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Coin } from "src/entities/coin.entity";
+import { Coin } from "../entities/coin.entity";
 import * as dotenv from 'dotenv';
 import { ConfigService } from "@nestjs/config";
 
