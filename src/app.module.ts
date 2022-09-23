@@ -6,6 +6,7 @@ import { environments } from './environments';
 import * as Joi from 'joi';
 import { CoinsModule } from './coins/coins.module';
 import { CategoriesModule } from './categories/categories.module';
+import { DatabaseModule } from './database.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { CategoriesModule } from './categories/categories.module';
     }),
     CoinsModule,
     CategoriesModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

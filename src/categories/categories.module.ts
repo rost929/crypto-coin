@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CategoriesService } from './services/categories.service';
 import { CategoriesController } from './controllers/categories.controller';
-import { CoinsModule } from 'src/coins/coins.module';
+import { CoinsModule } from '../coins/coins.module';
 
 @Module({
   imports: [CoinsModule],
