@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BaseController } from './controllers/basic.controller';
-import { BaseService } from './services/base.service';
-import { CoinsController } from './controllers/coins.controller';
-import { CoinsService } from './services/coins.service';
 import { ConfigModule } from '@nestjs/config';
 import { environments } from './environments';
 import * as Joi from 'joi';
+import { CoinsModule } from './coins/coins.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -19,8 +17,10 @@ import * as Joi from 'joi';
         BASE_API_URL: Joi.string().required(),
       }),
     }),
+    CoinsModule,
+    CategoriesModule,
   ],
-  controllers: [AppController, BaseController, CoinsController],
-  providers: [AppService, BaseService, CoinsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
