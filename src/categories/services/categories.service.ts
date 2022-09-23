@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { CoinsService } from 'src/coins/services/coins.service';
 import { CategoryMarket } from '../entities/category-market.entity';
 import { Category } from '../entities/category.entity';
 const axios = require('axios');
 
 @Injectable()
 export class CategoriesService {
-  constructor(private configService: ConfigService) {}
+  constructor(
+    private configService: ConfigService,
+    private coinsService: CoinsService,
+    ) {}
 
   async getCategories(): Promise<Category[]> {
     try {

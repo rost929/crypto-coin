@@ -7,6 +7,6 @@ import { BaseService } from './services/base.service';
 @Module({
   controllers: [CoinsController, BaseController],
   providers: [BaseService, CoinsService],
-  /* exports: [ProductsService], */
+  exports: [CoinsService],
 })
 export class CoinsModule {}

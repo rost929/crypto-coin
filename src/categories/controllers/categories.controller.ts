@@ -8,7 +8,7 @@ export class CategoriesController {
   constructor(private categoryService: CategoriesService) {}
 
   @Get('')
-  @ApiOperation({ summary: 'Service to test API connection' })
+  @ApiOperation({ summary: 'Get all categories' })
   getCategories() {
     console.log('Enter first endpoint');
 
@@ -16,7 +16,7 @@ export class CategoriesController {
   }
 
   @Get('market')
-  @ApiOperation({ summary: 'Service to test API connection' })
+  @ApiOperation({ summary: 'Get all categories by order criteria' })
   getCategoriesByMarket(@Query('order') order: string) {
     return this.categoryService.getCategoriesByMarket(order);
   }
