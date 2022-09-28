@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Coin } from '../entities/coin.entity';
 import * as dotenv from 'dotenv';
 import { ConfigService } from '@nestjs/config';
+import { Db } from 'mongodb';
 
 //dotenv.config();
 
@@ -11,7 +12,10 @@ const axios = require('axios');
 
 @Injectable()
 export class CoinsService {
-  constructor(private configService: ConfigService) {}
+  constructor(
+    private configService: ConfigService,
+    @Inject('MONGO') private database: Db,
+  ) {}
 
   async getCoinList(): Promise<Coin[]> {
     try {
@@ -44,6 +48,16 @@ export class CoinsService {
       return marketList.data;
     } catch (error) {
       throw new Error('Error getting coin market list');
+    }
+  }
+
+  async getCoinsFromMongo(): Promise<any> {
+    try {
+      const coinsCollection = this.database.collection('coins');
+      const coins = await coinsCollection.find().toArray();
+      return coins;
+    } catch (error) {
+      throw new Error('Error getting coins from DB');
     }
   }
 }

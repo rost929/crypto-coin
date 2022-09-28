@@ -25,4 +25,10 @@ export class CoinsController {
   getCoinById(@Param('id') id: string) {
     return this.coinsService.getCoinById(id);
   }
+
+  @Get('/stored')
+  @ApiOperation({ summary: 'Get coins stored in mongo DB'})
+  getCoinsFromDb() {
+    return this.coinsService.getCoinsFromMongo();
+  }
 }
