@@ -1,7 +1,18 @@
-import { Controller, Get, Param, Query, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  ValidationPipe,
+} from '@nestjs/common';
 import { MarketsDto } from '../dtos/markets.dto';
 import { CoinsService } from '../services/coins.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CreateCoindDto, UpdateCointDto } from '../dtos/coins.dto';
 
 @ApiTags('coins')
 @Controller('coins')
@@ -25,10 +36,30 @@ export class CoinsController {
   getCoinById(@Param('id') id: string) {
     return this.coinsService.getCoinById(id);
   }
+  @Get('/stored/:id')
+  @ApiOperation({ summary: 'Get coins stored in mongo DB' })
+  findStoredCoinById(@Param('id') id: string) {
+    return this.coinsService.findById(id);
+  }
 
-  @Get('/stored')
-  @ApiOperation({ summary: 'Get coins stored in mongo DB'})
-  getCoinsFromDb() {
-    return this.coinsService.getCoinsFromMongo();
+  @Get('/storedB')
+  @ApiOperation({ summary: 'Get coins stored in mongo DB' })
+  findAllStoredCoins() {
+    return this.coinsService.findAll();
+  }
+
+  @Post()
+  create(@Body() payload: CreateCoindDto) {
+    return this.coinsService.createCoin(payload);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() payload: UpdateCointDto) {
+    return this.coinsService.updateCoin(id, payload);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.coinsService.deleteCoin(id);
   }
 }

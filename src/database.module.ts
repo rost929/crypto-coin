@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import config from './config';
-import { MongoClient } from 'mongodb';
+//import { MongoClient } from 'mongodb';
 import { MongooseModule } from '@nestjs/mongoose';
 
 //import { MongooseModule } from "@nestjs/mongoose";
@@ -33,7 +33,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [config.KEY]
     })
   ],
-  providers: [
+  /*providers: [
     {
       provide: 'MONGO',
       useFactory: async (configService: ConfigType<typeof config>) => {
@@ -50,8 +50,8 @@ import { MongooseModule } from '@nestjs/mongoose';
         }
       },
       inject: [config.KEY]
-    },
-  ],
-  exports: ['MONGO'],
+    }, 
+  ],*/
+  exports: [ MongooseModule],
 })
 export class DatabaseModule {}
